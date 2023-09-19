@@ -199,21 +199,14 @@
           <li>
             <a href="<?php echo base_url('admin/guru'); ?>"><i class="fa-solid fa-chalkboard-user mx-2"></i> Guru</a>
           </li>
-          <li>
-            <a href="<?php echo base_url('admin/tambah'); ?>"><i class="fa-solid fa-book-open mx-2"></i> Mapel</a>
-          </li>
-          <li>
-            <a href="<?php echo base_url('admin/ubah_siswa'); ?>"><i class="fa-solid fa-shapes mx-2"></i> Kelas</a>
-          </li>
+          
         </ul>
 
         <ul class="list-unstyled CTAs">
           <li>
-            <a
-              href="https://bootstrapious.com/p/bootstrap-sidebar"
-              class="article"
-              >Back to article</a
-            >
+           <a href="<?php echo base_url(
+              'auth/logout'
+          ); ?>"><i class="fa-solid fa-right-from-bracket">Logout</i></a>
           </li>
         </ul>
       </nav>
@@ -240,13 +233,13 @@
         <div class="container">
           <div class="row">
                <!-- Card 1 -->
-               <div class="col-lg-4 col-md-6 mb-4">
+               <div class="col-lg-6 col-md-6 mb-6">
               <div class="card">
                 <div class="card-header">Featured</div>
                 <div class="card-body">
                   <h5 class="card-title">Special title treatment</h5>
                   <p class="card-text">
-                   Adit
+                  <?php echo $siswa ;?>
                   </p>
                   <a href="#" class="btn btn-outline-warning">Go somewhere</a>
                 </div>
@@ -254,35 +247,18 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-6 col-md-6 mb-6">
               <div class="card">
                 <div class="card-header">Featured</div>
                 <div class="card-body">
                   <h5 class="card-title">Special title treatment</h5>
                   <p class="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
+                  <?php echo $guru ;?>
                   </p>
                   <a href="#" class="btn btn-outline-warning">Go somewhere</a>
                 </div>
               </div>
             </div>
-
-            <!-- Card 3 -->
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card">
-                <div class="card-header">Featured</div>
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
-                  <a href="#" class="btn btn-outline-warning">Go somewhere</a>
-                </div>
-              </div>
-            </div>
-            <!-- Tambahkan card lainnya di sini sesuai kebutuhan -->
           </div>
         </div>
             <!-- Tambahkan card lainnya di sini sesuai kebutuhan -->

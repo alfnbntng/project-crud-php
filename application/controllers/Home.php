@@ -9,8 +9,9 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$data['user'] = $this->m_model->get_data('admin')->result();
+		$data['admin'] = $this->m_model->get_data('admin')->result();
 		$data['siswa'] = $this->m_model->get_data('siswa')->result();
+		$data['guru'] = $this->m_model->get_data('guru')->result();
 		$this->load->view('home', $data);
 	}
 	
