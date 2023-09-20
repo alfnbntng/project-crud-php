@@ -19,6 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     public function siswa()
     {
         $data['siswa'] = $this->m_model->get_data('siswa')->result();
+        $data['kelas'] = $this->m_model->get_data('kelas')->result();
         $this->load->view('admin/siswa',$data);
     }
   
@@ -33,8 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             'nama_siswa' => $this->input->post('nama'),
             'nisn' => $this->input->post('nisn'),
             'alamat' => $this->input->post('alamat'),
-            'kelas' => $this->input->post('kelas'),
-            'jurusan' => $this->input->post('jurusan'),
+            'id_kelas' => $this->input->post('kelas'),
             'gender' => $this->input->post('gender'),
             'foto_siswa' => $this->input->post('foto_siswa'),
         ];
@@ -46,6 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     public function ubah_siswa($id)
 	{
 		$data['siswa'] = $this->m_model->get_by_id('siswa', 'id_siswa', $id)->result();
+		$data['kelas'] = $this->m_model->get_by_id( 'kelas', $id)->result();
 		$this->load->view('admin/ubah_siswa', $data);
 	}
     
@@ -55,8 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             'nama_siswa' => $this->input->post('nama'),
             'nisn' => $this->input->post('nisn'),
             'alamat' => $this->input->post('alamat'),
-            'kelas' => $this->input->post('kelas'),
-            'jurusan' => $this->input->post('jurusan'),
+            'id_kelas' => $this->input->post('kelas'),
             'gender' => $this->input->post('gender'),
         );
 		$eksekusi=$this->m_model->ubah_data

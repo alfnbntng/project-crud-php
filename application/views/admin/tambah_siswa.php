@@ -34,11 +34,13 @@
             </div>
             <div class="mb-3 col-6">
                 <label for="nama" class="form-label">Kelas</label>
-                <select name="kelas" class="form-select">
+                <select name="id_kelas" class="form-select">
                     <option selected>Pilih Kelas</option>
-                    <option value="X">X</option>
-                    <option value="XI">XI</option>
-                    <option value="XII">XII</option>
+                    <?php foreach($kelas as $row): ?>
+                    <option value="<?php echo $row->id?>">
+                        <?php echo $row->kelas;?>
+                    </option>
+                    <?php endforeach ?>
                    </select>
             </div>
             <div class="mb-3 col-6">
