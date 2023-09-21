@@ -35,27 +35,18 @@
             </div>
             <div class="mb-3 col-6">
                 <label for="nama" class="form-label">Kelas</label>
-                <select name="kelas" class="form-select">
-                    <option selected>Pilih Kelas</option>
-                    <option value="<?php echo $data_siswa->kelas ?>"><?php echo $data_siswa->kelas?></option>
-                    <option value="X">X</option>
-                    <option value="XI">XI</option>
-                    <option value="XII">XII</option>
+                <select name="id_kelas" class="form-select">
+                <option value="<?php echo $data_siswa->id_kelas?>">
+                        <?php echo tampil_full_kelas_byid($data_siswa->id_kelas);?>
+                    </option>
+                    <?php foreach($kelas as $row): ?>
+                    <option value="<?php echo $row->id?>">
+                        <?php echo $row->tingkat_kelas.' '.$row->jurusan_kelas?>
+                    </option>
+                    <?php endforeach ?>
                    </select>
             </div>
-            <div class="mb-3 col-6">
-                <label for="nama" class="form-label">Jurusan</label>
-                <select name="jurusan" class="form-select">
-                    <option selected>Pilih Jurusan</option>
-                    <option value="<?php echo $data_siswa->jurusan ?>"><?php echo $data_siswa->jurusan?></option>
-                    <option value="TBSM">Teknik dan Bisnis Sepeda Motor</option>
-                    <option value="TKJ">Teknik Komputer Dan Jaringan</option>
-                    <option value="TB">Tata Busana</option>
-                    <option value="DKV">Desain Komunikasi Visual</option>
-                    <option value="MultiMedia">MultiMedia</option>
-                   </select>
-            </div>
-            <div class="mb-3 col-12">
+            <div class="mb-3 col-6  ">
                 <label for="nama" class="form-label">Foto Siswa</label>
                 <input type="file" class="form-control" id="file" name="file">
             </div>

@@ -25,7 +25,7 @@ $active_page = ''; // Inisialisasi variabel halaman aktif
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
-            background-image: url("https://codzsword.github.io/bootstrap-sidebar/background-image.jpg");
+            background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v1016-c-08_1-ksh6mza3.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=f584d8501c27c5f649bc2cfce50705c0");
             background-repeat: no-repeat;
             background-position: center bottom;
             background-size: cover;
@@ -173,14 +173,17 @@ $active_page = ''; // Inisialisasi variabel halaman aktif
                     <li class="sidebar-item <?php echo ($active_page == 'dashboard') ? 'active' : ''; ?>">
                         <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
                             <i class="fa-solid fa-sliders pe-2"></i>
-                            Dashboard
+                            Kelas
                         </a>
                         <ul id="dashboard" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Dashboard Analytics</a>
+                                <a href="<?php echo base_url('admin/kelas_x')?>" class="sidebar-link">X</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Dashboard Ecommerce</a>
+                                <a href="#" class="sidebar-link">XI</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">XII</a>
                             </li>
                         </ul>
                     </li>
@@ -191,7 +194,7 @@ $active_page = ''; // Inisialisasi variabel halaman aktif
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="<?php echo base_url('auth/logout' ); ?>" class="sidebar_link">
+                                <a href="<?php echo base_url('auth/logout' ); ?>" class="sidebar-link">
                                     Logout
                                 </a>
                             </li>
@@ -224,7 +227,7 @@ $active_page = ''; // Inisialisasi variabel halaman aktif
         </aside>
        <!-- Main Component -->
       <div class="main">
-        <nav class="navbar navbar-expand px-3 border-bottom">
+        <nav class="navbar navbar-expand px-3 border-bottom bg-scondary">
           <!-- Button for sidebar toggle -->
           <button class="btn" type="button" data-bs-theme="dark">
             <span class="navbar-toggler-icon"></span>

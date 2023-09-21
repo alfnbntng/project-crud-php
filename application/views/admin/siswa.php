@@ -28,11 +28,10 @@
   </head>
   <body>
     <?php $this->load->view('sidebar'); ?>
-      <div class="container">
         <h2 class="text-center">Tabel Siswa</h2>
         <a href="<?php echo base_url('admin/tambah_siswa'); ?>" class="btn btn-outline-success my-2">Tambah</a>
         <div class="row">
-          <div class="table-responsive">
+          <div class="table-responsive container-fluid">
                 <table class="table">
                     <thead class="text-white">
                         <tr>
@@ -53,7 +52,7 @@
                             <td><?php echo $row->nisn ?></td>
                             <td><?php echo $row->alamat ?></td>
                             <td><?php echo $row->gender ?></td>
-                            <td><?php echo kelas_dan_jurusan($row->id_kelas)?></td>
+                            <td><?php echo tampil_full_kelas_byid($row->id_kelas);?></td>
                             <td class="td-actions text-right">
                                 <button type="button" rel="tooltip" class="btn btn-info btn-just-icon btn-sm">
                                 <i class="fa-solid fa-user"></i>
@@ -71,7 +70,6 @@
                 </table>
             </div>
          </div>
-      </div>
    <!-- di sini saya tambahkan tag penutup dari sidebar file sidebar -->
 
    </div>

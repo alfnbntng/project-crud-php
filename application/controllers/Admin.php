@@ -25,7 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   
     public function tambah_siswa()
     {
-        $this->load->view('admin/tambah_siswa');
+        $data['kelas'] = $this->m_model->get_data('kelas')->result();
+        $this->load->view('admin/tambah_siswa',$data);
     }
 
     public function action_tambah_siswa()
@@ -34,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             'nama_siswa' => $this->input->post('nama'),
             'nisn' => $this->input->post('nisn'),
             'alamat' => $this->input->post('alamat'),
-            'id_kelas' => $this->input->post('kelas'),
+            'id_kelas' => $this->input->post('id_kelas'),
             'gender' => $this->input->post('gender'),
             'foto_siswa' => $this->input->post('foto_siswa'),
         ];
@@ -46,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     public function ubah_siswa($id)
 	{
 		$data['siswa'] = $this->m_model->get_by_id('siswa', 'id_siswa', $id)->result();
-		$data['kelas'] = $this->m_model->get_by_id( 'kelas', $id)->result();
+		$data['kelas'] = $this->m_model->get_by_id('kelas', 'id', $id)->result();
 		$this->load->view('admin/ubah_siswa', $data);
 	}
     
@@ -56,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             'nama_siswa' => $this->input->post('nama'),
             'nisn' => $this->input->post('nisn'),
             'alamat' => $this->input->post('alamat'),
-            'id_kelas' => $this->input->post('kelas'),
+            'id_kelas' => $this->input->post('id_kelas'),
             'gender' => $this->input->post('gender'),
         );
 		$eksekusi=$this->m_model->ubah_data
@@ -142,6 +143,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     {
         $this->m_model->delete('guru', 'id_guru', $id);
         redirect(base_url('admin/guru'));
-    }    
+    }
+    
+    // data siswa berdasarkan kelas
+
+    public function kelas_x()
+    {
+        $this->load->view('admin/kelas_x');  
+    }
 }
 ?>
