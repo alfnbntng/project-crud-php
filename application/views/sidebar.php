@@ -180,10 +180,10 @@ $active_page = ''; // Inisialisasi variabel halaman aktif
                                 <a href="<?php echo base_url('admin/kelas_x')?>" class="sidebar-link">X</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">XI</a>
+                                <a href="<?php echo base_url('admin/kelas_xi')?>" class="sidebar-link">XI</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">XII</a>
+                                <a href="<?php echo base_url('admin/kelas_xii')?>" class="sidebar-link">XII</a>
                             </li>
                         </ul>
                     </li>

@@ -1,13 +1,9 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-$active_page = 'x'; // Set halaman aktif
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Dashboard App</title>
+    <title>Kelas X</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome CSS -->
@@ -19,192 +15,84 @@ $active_page = 'x'; // Set halaman aktif
             font-family: "Poppins", sans-serif;
             background: #fafafa;
         }
-
-        .btn-primary:hover,
-        .btn-primary:focus {
-            background-color: #108d6f;
-            border-color: #108d6f;
-            box-shadow: none;
-            outline: none;
-        }
-
-        .btn-primary {
-            color: #fff;
-            background-color: #007b5e;
-            border-color: #007b5e;
-        }
-
-        section {
-            padding: 60px 0;
-        }
-
-        section .section-title {
-            text-align: center;
-            color: #007b5e;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-        }
-
-        #team .card {
-            border: none;
-            background: #ffffff;
-        }
-
-        .image-flip:hover .backside,
-        .image-flip.hover .backside {
-            -webkit-transform: rotateY(0deg);
-            -moz-transform: rotateY(0deg);
-            -o-transform: rotateY(0deg);
-            -ms-transform: rotateY(0deg);
-            transform: rotateY(0deg);
-            border-radius: .25rem;
-        }
-
-        .image-flip:hover .frontside,
-        .image-flip.hover .frontside {
-            -webkit-transform: rotateY(180deg);
-            -moz-transform: rotateY(180deg);
-            -o-transform: rotateY(180deg);
-            transform: rotateY(180deg);
-        }
-
-        .mainflip {
-            -webkit-transition: 1s;
-            -webkit-transform-style: preserve-3d;
-            -ms-transition: 1s;
-            -moz-transition: 1s;
-            -moz-transform: perspective(1000px);
-            -moz-transform-style: preserve-3d;
-            -ms-transform-style: preserve-3d;
-            transition: 1s;
-            transform-style: preserve-3d;
-            position: relative;
-        }
-
-        .frontside {
-            position: relative;
-            -webkit-transform: rotateY(0deg);
-            -ms-transform: rotateY(0deg);
-            z-index: 2;
-            margin-bottom: 30px;
-        }
-
-        .backside {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: white;
-            -webkit-transform: rotateY(-180deg);
-            -moz-transform: rotateY(-180deg);
-            -o-transform: rotateY(-180deg);
-            -ms-transform: rotateY(-180deg);
-            transform: rotateY(-180deg);
-            -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-            -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-            box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-        }
-
-        .frontside,
-        .backside {
-            -webkit-backface-visibility: hidden;
-            -moz-backface-visibility: hidden;
-            -ms-backface-visibility: hidden;
-            backface-visibility: hidden;
-            -webkit-transition: 1s;
-            -webkit-transform-style: preserve-3d;
-            -moz-transition: 1s;
-            -moz-transform-style: preserve-3d;
-            -o-transition: 1s;
-            -o-transform-style: preserve-3d;
-            -ms-transition: 1s;
-            -ms-transform-style: preserve-3d;
-            transition: 1s;
-            transform-style: preserve-3d;
-        }
-
-        .frontside .card,
-        .backside .card {
-            min-height: 312px;
-        }
-
-        .backside .card a {
-            font-size: 18px;
-            color: #007b5e !important;
-        }
-
-        .frontside .card .card-title,
-        .backside .card .card-title {
-            color: #007b5e !important;
-        }
-
-        .frontside .card .card-body img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-        }
     </style>
 </head>
 
-
 <body>
 <?php $this->load->view('sidebar'); ?>
+    <h2>Kelas X</h2>
+    <div class="row">
+        <?php foreach ($siswa_kelas_x as $siswa) : ?>
             <div class="col-xs-12 col-sm-6 col-md-3">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                    <div class="mainflip">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_02.png" alt="card image"></p>
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
-                                    <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-skype"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
-                                                <i class="fa fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                <div class="card bg-transparent text-white">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                        <img src="<?php echo base_url('uploads/siswa/' . $siswa->foto_siswa); ?>" class="img-fluid" />
+                        <a href="#!">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><?php echo $siswa->nama_siswa ?></h5>
+                        <p class="card-text text-center"><?php echo $siswa->alamat ?></p>
+                        <!-- Tambahkan tombol Detail dengan atribut data-siswa -->
+                        <button type="button" class="btn btn-primary show-detail" data-toggle="modal" data-target="#detailModal" data-siswa='<?php echo json_encode($siswa); ?>'>Detail</button>
                     </div>
                 </div>
             </div>
-  
-<!-- di sini saya tambahkan tag penutup dari sidebar file sidebar -->
-
-          </div>
-        </main>
-      </div>
+        <?php endforeach; ?>
     </div>
 
+    <!-- Modal untuk menampilkan detail siswa -->
+   <!-- Tampilan modal untuk menampilkan detail siswa -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Siswa</h5>
+            </div>
+            <div class="modal-body bg-dark text-white">
+                <form>
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Nama Siswa</label>
+                        <input type="text" class="form-control bg-dark text-white" id="nama" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nisn" class="form-label">NISN</label>
+                        <input type="text" class="form-control bg-dark text-white" id="nisn" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="alamat" class="form-label">Alamat</label>
+                        <input type="text" class="form-control bg-dark text-white" id="alamat" readonly>
+                    </div>
+                    <!-- Tambahkan input lainnya sesuai kebutuhan -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Tangkap klik tombol Detail
+            $('.show-detail').click(function () {
+                var siswaData = $(this).data('siswa'); // Ambil data siswa dari atribut data-siswa
+                populateModal(siswaData); // Panggil fungsi untuk mengisi modal dengan data siswa
+            });
+
+            // Fungsi untuk mengisi modal dengan data siswa
+            function populateModal(siswaData) {
+                $('#nama').val(siswaData.nama_siswa);
+                $('#nisn').val(siswaData.nisn);
+                $('#alamat').val(siswaData.alamat);
+                // Tambahkan data lainnya sesuai kebutuhan
+
+                // Aktifkan modal
+                $('#detailModal').modal('show');
+            }
+        });
+    </script>
 </body>
 </html>

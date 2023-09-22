@@ -31,18 +31,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     public function action_tambah_siswa()
     {
-        $data = [
-            'nama_siswa' => $this->input->post('nama'),
-            'nisn' => $this->input->post('nisn'),
-            'alamat' => $this->input->post('alamat'),
-            'id_kelas' => $this->input->post('id_kelas'),
-            'gender' => $this->input->post('gender'),
-            'foto_siswa' => $this->input->post('foto_siswa'),
-        ];
+        // Konfigurasi untuk unggahan berkas
+        $config['upload_path'] = './uploads/siswa/'; // Lokasi penyimpanan berkas
+        $config['allowed_types'] = 'jpg|jpeg|png|gif'; // Jenis berkas yang diperbolehkan
+        $config['max_size'] = 2048; // Maksimum ukuran berkas (dalam kilobita)
+        $config['file_name'] = 'siswa_' . time(); // Nama berkas yang akan disimpan
 
-        $this->m_model->tambah_data('siswa', $data);
-        redirect(base_url('admin/siswa'));
-    }  
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('foto_siswa')) {
+            // Jika unggahan berkas berhasil
+            $upload_data = $this->upload->data();
+            $file_name = $upload_data['file_name'];
+
+            $data = [
+                'nama_siswa' => $this->input->post('nama'),
+                'nisn' => $this->input->post('nisn'),
+                'alamat' => $this->input->post('alamat'),
+                'id_kelas' => $this->input->post('id_kelas'),
+                'gender' => $this->input->post('gender'),
+                'foto_siswa' => $file_name, // Simpan nama berkas di database
+            ];
+
+            $this->m_model->tambah_data('siswa', $data);
+            redirect(base_url('admin/siswa'));
+        } else {
+            // Jika unggahan berkas gagal
+            $error = array('error' => $this->upload->display_errors());
+            $this->load->view('admin/tambah_siswa', $error);
+        }
+    }
+
+
 
     public function ubah_siswa($id)
 	{
@@ -146,10 +166,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     
     // data siswa berdasarkan kelas
-
     public function kelas_x()
     {
-        $this->load->view('admin/kelas_x');  
+        $data['siswa_kelas_x'] = $this->m_model->get_siswa_kelas('X');
+        $this->load->view('admin/kelas_x', $data);
     }
+
+    public function kelas_xi()
+    {
+        $data['siswa_kelas_xi'] = $this->m_model->get_siswa_kelas('XI');
+        $this->load->view('admin/kelas_xi', $data);
+    }
+
+    public function kelas_xii()
+    {
+        $data['siswa_kelas_xii'] = $this->m_model->get_siswa_kelas('XII');
+        $this->load->view('admin/kelas_xii', $data);
+    }
+    
+    
+    public function daftar_siswa() {
+        // Mengambil daftar kelas
+        $data['kelas'] = $this->m_model->get_data('kelas')->result();
+        
+        // Mengelompokkan siswa berdasarkan kelas
+        foreach ($data['kelas'] as $kelas) {
+            $id_kelas = $kelas->id;
+            $data['siswa'][$id_kelas] = $this->m_model->get_siswa_by_kelas($id_kelas);
+        }
+        
+        // Menampilkan tampilan dengan data yang telah dielompokkan
+        $this->load->view('siswa_view', $data);
+    }
+    
+    
 }
 ?>
