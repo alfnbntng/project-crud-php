@@ -41,8 +41,8 @@
                 </select>
             </div>
             <div class="mb-3 col-12">
-                <label for="nama" class="form-label">Foto guru</label>
-                <input type="file" class="form-control" id="file" name="file">
+                <label for="foto_guru" class="form-label">Foto Guru</label>
+                <input type="file" class="form-control" id="foto_guru" name="foto_guru">
             </div>
             <button type="submit" class="btn btn-primary" name="submit">Submit</button>
         </form>

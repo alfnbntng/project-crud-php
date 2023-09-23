@@ -31,16 +31,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     public function action_tambah_siswa()
     {
-        // Konfigurasi untuk unggahan berkas
-        $config['upload_path'] = './uploads/siswa/'; // Lokasi penyimpanan berkas
-        $config['allowed_types'] = 'jpg|jpeg|png|gif'; // Jenis berkas yang diperbolehkan
-        $config['max_size'] = 2048; // Maksimum ukuran berkas (dalam kilobita)
-        $config['file_name'] = 'siswa_' . time(); // Nama berkas yang akan disimpan
+        $config['upload_path'] = './uploads/siswa/'; 
+        $config['allowed_types'] = 'jpg|jpeg|png|gif'; 
+        $config['max_size'] = 2048; 
+        $config['file_name'] = 'siswa_' . time(); 
 
         $this->load->library('upload', $config);
 
         if ($this->upload->do_upload('foto_siswa')) {
-            // Jika unggahan berkas berhasil
             $upload_data = $this->upload->data();
             $file_name = $upload_data['file_name'];
 
@@ -50,13 +48,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 'alamat' => $this->input->post('alamat'),
                 'id_kelas' => $this->input->post('id_kelas'),
                 'gender' => $this->input->post('gender'),
-                'foto_siswa' => $file_name, // Simpan nama berkas di database
+                'foto_siswa' => $file_name, 
             ];
 
             $this->m_model->tambah_data('siswa', $data);
             redirect(base_url('admin/siswa'));
         } else {
-            // Jika unggahan berkas gagal
             $error = array('error' => $this->upload->display_errors());
             $this->load->view('admin/tambah_siswa', $error);
         }
@@ -113,20 +110,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     public function action_tambah_guru()
     {
-        $data = [
-            'nama_guru' => $this->input->post('nama'),
-            'nik' => $this->input->post('nik'),
-            'alamat' => $this->input->post('alamat'),
-            'mapel' => $this->input->post('mapel'),
-            'jabatan' => $this->input->post('jabatan'),
-            'gender' => $this->input->post('gender'),
-            'foto_guru' => $this->input->post('foto_guru'),
-        ];
+        $config['upload_path'] = './uploads/guru/'; 
+        $config['allowed_types'] = 'jpg|jpeg|png|gif'; 
+        $config['max_size'] = 2048; 
+        $config['file_name'] = 'guru_' . time(); 
 
-        $this->m_model->tambah_data('guru', $data);
-        redirect(base_url('admin/guru'));
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('foto_guru')) {
+            $upload_data = $this->upload->data();
+            $file_name = $upload_data['file_name'];
+
+            $data = [
+                'nama_guru' => $this->input->post('nama'),
+                'nik' => $this->input->post('nik'),
+                'alamat' => $this->input->post('alamat'),
+                'mapel' => $this->input->post('mapel'),
+                'jabatan' => $this->input->post('jabatan'),
+                'gender' => $this->input->post('gender'),
+                'foto_guru' => $file_name,
+            ];
+
+            $this->m_model->tambah_data('guru', $data);
+            redirect(base_url('admin/guru'));
+        } else {
+            $error = array('error' => $this->upload->display_errors());
+            $this->load->view('admin/tambah_guru', $error);
+        }
     }
-
 
     public function ubah_guru($id)
 	{
@@ -165,7 +176,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         redirect(base_url('admin/guru'));
     }
     
-    // data siswa berdasarkan kelas
     public function kelas_x()
     {
         $data['siswa_kelas_x'] = $this->m_model->get_siswa_kelas('X');
@@ -185,20 +195,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     
     
-    public function daftar_siswa() {
-        // Mengambil daftar kelas
+    public function daftar_siswa() 
+    {
         $data['kelas'] = $this->m_model->get_data('kelas')->result();
         
-        // Mengelompokkan siswa berdasarkan kelas
         foreach ($data['kelas'] as $kelas) {
             $id_kelas = $kelas->id;
             $data['siswa'][$id_kelas] = $this->m_model->get_siswa_by_kelas($id_kelas);
         }
         
-        // Menampilkan tampilan dengan data yang telah dielompokkan
         $this->load->view('siswa_view', $data);
     }
-    
+
+    public function detail_siswa($id_siswa)
+    {
+        $data['siswa'] = $this->m_model->get_siswaById('siswa', $id_siswa)->result();
+        $data['kelas'] = $this->m_model->get_by_id('kelas', 'id', $id_siswa)->result();
+        $this->load->view('admin/detail_siswa',$data);
+    }
+
+    public function detail_guru($id_guru)
+    {
+        $data['guru'] = $this->m_model->get_guruById('guru', $id_guru)->result();
+        $this->load->view('admin/detail_guru',$data);
+    }
+
+    public function guru_mapel()
+    {
+        $data['guru'] = $this->m_model->get_data('guru')->result();
+        $this->load->view('admin/guru_mapel',$data);
+    }
     
 }
 ?>

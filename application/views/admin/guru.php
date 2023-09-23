@@ -53,9 +53,9 @@ $active_page = 'guru'; // Set halaman aktif
                 <td><?php echo $row->jabatan ?></td>
                 <td><?php echo $row->gender ?></td>
                 <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" class="btn btn-info btn-just-icon btn-sm">
-                        <i class="fa-solid fa-user"></i>
-                    </button>
+                    <a href="<?php echo base_url('admin/detail_guru/') . $row->id_guru ;?>" type="button" rel="tooltip" class="btn btn-secondary btn-just-icon btn-sm">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
                     <a href="<?php echo base_url('admin/ubah_guru/') . $row->id_guru ;?>" type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm">
                         <i class="fa-solid fa-pencil"></i>
                     </a>

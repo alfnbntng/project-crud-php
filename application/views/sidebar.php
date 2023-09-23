@@ -145,15 +145,15 @@ $active_page = ''; // Inisialisasi variabel halaman aktif
         <aside id="sidebar">
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#">CodzSword</a>
+                    <a href="#">Sistem Data Sekolah</a>
                 </div>
                 <!-- Sidebar Navigation -->
                 <ul class="sidebar-nav">
-                    <li class="sidebar-header">Tools & Components</li>
+                    <li class="sidebar-header">Rekap Data</li>
                     <li class="sidebar-item <?php echo ($active_page == 'profile') ? 'active' : ''; ?>">
                         <a href="<?php echo base_url('admin') ?>" class="sidebar-link">
                             <i class="fa-solid fa-list pe-2"></i>
-                            Profile
+                            Dashboard
                         </a>
                     </li>
                     <li class="sidebar-item <?php echo ($active_page == 'tabel') ? 'active' : ''; ?>">
@@ -187,41 +187,26 @@ $active_page = ''; // Inisialisasi variabel halaman aktif
                             </li>
                         </ul>
                     </li>
+                    <li class="sidebar-item <?php echo ($active_page == 'profile') ? 'active' : ''; ?>">
+                        <a href="<?php echo base_url('admin/guru_mapel') ?>" class="sidebar-link">
+                        <i class="fa-solid fa-chalkboard-user pe-2"></i>
+                            Guru
+                        </a>
+                    </li>
                     <li class="sidebar-item <?php echo ($active_page == 'auth') ? 'active' : ''; ?>">
                         <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
                             <i class="fa-regular fa-user pe-2"></i>
                             Auth
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="<?php echo base_url('auth/logout' ); ?>" class="sidebar-link">
+                            <li class="sidebar-item px-3">
+                                <a href="<?php echo base_url('auth/logout' ); ?>" class="sidebar-link btn btn-danger">
                                     Logout
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-header">Multi Level Nav</li>
-                    <li class="sidebar-item <?php echo ($active_page == 'multi') ? 'active' : ''; ?>">
-                        <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
-                            <i class="fa-solid fa-share-nodes pe-2"></i>
-                            Multi Level
-                        </a>
-                        <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
-                                    Two Links
-                                </a>
-                                <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
-                                    <li class="sidebar-item">
-                                        <a href="#" class="sidebar-link">Link 1</a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="#" class="sidebar-link">Link 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
+                    
                 </ul>
             </div>
         </aside>

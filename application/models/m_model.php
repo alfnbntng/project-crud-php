@@ -37,6 +37,20 @@ class M_model extends CI_Model{
         return $this->db->get('siswa')->result();
     }
 
+    function get_siswaById($tabel, $id_siswa)
+    {
+        $data=$this->db->where('id_siswa', $id_siswa)->get($tabel);
+        return $data;
+    }
+
+    function get_guruById($tabel, $id_guru)
+    {
+        $data=$this->db->where('id_guru', $id_guru)->get($tabel);
+        return $data;
+    }
+
+
+
     public function get_siswa_kelas($tingkat_kelas) {
         // Query database untuk mengambil siswa berdasarkan tingkat_kelas
         $this->db->select('siswa.*'); // Pilih semua kolom dari tabel siswa

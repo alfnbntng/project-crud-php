@@ -29,18 +29,18 @@
   <body>
       <?php $this->load->view('sidebar'); ?>
         <div class="container-fluid my-4">
-          <h2 class="text-center">Data Guru Dan Siswa</h2>
+          <h2 class="text-center py-4">Data Guru Dan Siswa</h2>
           <div class="row py-2">
                <!-- Card 1 -->
             <div class="col-lg-6 col-md-6 mb-6">
               <div class="card border-white text-white bg-transparent outline-light">
-                <div class="card-header bg-warning border-white">Featured</div>
+                <div class="card-header bg-warning border-white">Data Siswa</div>
                 <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
+                  <h5 class="card-title">Jumlah Siswa</h5>
                   <p class="card-text">
                   <?php echo $siswa ;?>
                   </p>
-                  <a href="#" class="btn btn-outline-warning">Go somewhere</a>
+                  <a href="<?php echo base_url('admin/siswa') ?>" class="btn btn-outline-warning">Lihat Data</a>
                 </div>
               </div>
             </div>
@@ -48,13 +48,13 @@
             <!-- Card 2 -->
             <div class="col-lg-6 col-md-6 mb-6">
               <div class="card border-white text-white bg-transparent outline-light">
-                <div class="card-header bg-warning border-white">Featured</div>
+                <div class="card-header bg-warning border-white">Data Guru</div>
                 <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
+                  <h5 class="card-title">Jumlah Guru</h5>
                   <p class="card-text">
                   <?php echo $guru ;?>
                   </p>
-                  <a href="#" class="btn btn-outline-warning">Go somewhere</a>
+                  <a href="<?php echo base_url('admin/guru') ?>" class="btn btn-outline-warning">Lihat Data</a>
                 </div>
               </div>
             </div>

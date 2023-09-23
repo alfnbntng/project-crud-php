@@ -26,27 +26,25 @@ $active_page = 'x'; // Set halaman aktif
 <body>
 <?php $this->load->view('sidebar'); ?>
             <!-- Tambahkan kode HTML untuk tampilan kelas_x.php sesuai dengan kebutuhan Anda -->
-<h2>Kelas X</h2>
-<div class="row">
-    <?php foreach ($siswa_kelas_xii as $siswa) : ?>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="card bg-transparent text-white">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img src="<?php echo base_url('uploads/siswa/' . $siswa->foto_siswa); ?>" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                    </a>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title text-center"><?php echo $siswa->nama_siswa ?></h5>
-                    <p class="card-text text-center"><?php echo $siswa->alamat ?></p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailModal">Detail</button>
-
+<h2 class="text-center py-3">Kelas XII</h2>
+    <div class="row">
+        <?php foreach ($siswa_kelas_xii as $siswa) : ?>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="card bg-transparent text-white">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                        <img src="<?php echo base_url('uploads/siswa/' . $siswa->foto_siswa); ?>" class="img-fluid" />
+                        <a href="#!">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><?php echo $siswa->nama_siswa ?></h5>
+                        <p class="card-text text-center"><?php echo $siswa->alamat ?></p>
+                    </div>
                 </div>
             </div>
-        </div>
-    <?php endforeach; ?>
-</div>
+        <?php endforeach; ?>
+    </div>
 
 
   
