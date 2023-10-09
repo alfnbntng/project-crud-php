@@ -147,7 +147,7 @@ $active_page = ''; // Inisialisasi variabel halaman aktif
                 <div class="sidebar-logo">
                     <a href="#">Sistem Data Sekolah</a>
                 </div>
-                <!-- Sidebar Navigation -->
+
                 <ul class="sidebar-nav">
                     <li class="sidebar-header">Rekap Data</li>
                     <li class="sidebar-item <?php echo ($active_page == 'profile') ? 'active' : ''; ?>">
@@ -196,7 +196,7 @@ $active_page = ''; // Inisialisasi variabel halaman aktif
                     <li class="sidebar-item <?php echo ($active_page == 'auth') ? 'active' : ''; ?>">
                         <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
                             <i class="fa-regular fa-user pe-2"></i>
-                            Auth
+                            Akun
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item px-3">
@@ -210,13 +210,15 @@ $active_page = ''; // Inisialisasi variabel halaman aktif
                 </ul>
             </div>
         </aside>
-       <!-- Main Component -->
+
       <div class="main">
         <nav class="navbar navbar-expand px-3 border-bottom bg-scondary">
-          <!-- Button for sidebar toggle -->
-          <button class="btn" type="button" data-bs-theme="dark">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+            <button class="btn btn-primary" type="button" data-bs-theme="dark">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <button class="btn btn-primary" type="button" data-bs-theme="dark">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </nav>
         <main class="content px-3 py-2">
           <div class="container-fluid">

@@ -24,7 +24,7 @@
             padding: 20px;
         }
         .logo {
-            max-width: 200px;
+            max-width:300px;
             height: auto; 
             display: block; 
             margin: 0 auto 40px; 
@@ -46,14 +46,14 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="">
                         <div class="container">
                             <img src="https://binusasmg.sch.id/ppdb/logobinusa.png" alt="Logo" class="mb-4 logo">
-                            <h2 class="card-title text-center">Welcome King</h2>
+                            <h2 class="card-title text-center text-dark fs-1">Welcome King</h2>
                             <hr class="text-light">
                             <div class="d-flex justify-content-center">
                                 <div class="text-center mx-1">
-                                    <a href="./register" type="submit" class="btn btn-warning custom-button">Register</a>
+                                    <a href="./register" type="submit" class="btn btn-warning custom-button">Daftar Akun</a>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
         </div>
     </div>
     <footer class="footer text-center mt-5">
-    <p>&copy; <?php echo date('Y'); ?> Manchester United Football Club</p>
-</footer>
+        <p>&copy; <?php echo date('Y'); ?> SMK Bina Nusantara Demak</p>
+    </footer>
 </body>
 </html>

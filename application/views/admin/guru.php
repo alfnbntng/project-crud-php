@@ -12,7 +12,7 @@ $active_page = 'guru'; // Set halaman aktif
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
         body {
@@ -59,9 +59,7 @@ $active_page = 'guru'; // Set halaman aktif
                     <a href="<?php echo base_url('admin/ubah_guru/') . $row->id_guru ;?>" type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm">
                         <i class="fa-solid fa-pencil"></i>
                     </a>
-                    <button type="button" rel="tooltip" onclick="hapus(<?php echo $row->id_guru; ?>)" class="btn btn-danger btn-just-icon btn-sm">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
+                    <button  onclick="hapus(<?php echo $row->id_guru; ?>)" type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
                 </td>
             </tr>
             <?php $no++; endforeach ?>
@@ -86,14 +84,28 @@ $active_page = 'guru'; // Set halaman aktif
             $("#sidebarCollapse").on("click", function () {
                 $("#sidebar").toggleClass("active");
             });
-
-            function hapus(id){
-                var yes = confirm('yakin di hapus?');
-                if(yes == true) {
-                    window.location.href = "<?php echo base_url('admin/hapus_guru/')?>" + id;
-                }
-            }
         });
+    </script>
+    <script>
+        function hapus(id) {
+            Swal.fire({
+                title: 'Konfirmasi Hapus',
+                text: 'Anda yakin ingin menghapus data guru ini?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Jika pengguna mengklik "Ya, Hapus!", arahkan ke fungsi hapus di controller
+                    window.location.href = "<?php echo base_url(
+                        'admin/hapus_guru/'
+                    ); ?>" + id;
+                }
+            });
+        }
     </script>
 </body>
 </html>

@@ -17,6 +17,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
       @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
@@ -134,9 +135,7 @@
                                 <a href="<?php echo base_url('admin/ubah_siswa/') . $row->id_siswa ;?>" type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm">
                                   <i class="fa-solid fa-pencil"></i>
                                 </a>
-                                <button type="button" rel="tooltip" onclick="hapus(<?php echo $row->id_siswa; ?>)" class="btn btn-danger btn-just-icon btn-sm">
-                                  <i class="fa-solid fa-trash"></i>
-                                </button>
+                                <button rel="tooltip" onclick="hapus(<?php echo $row->id_siswa; ?>)" type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
                             </td>
                         </tr>
                         <?php $no++; endforeach ?>
@@ -158,14 +157,28 @@
                 $("#sidebar").toggleClass("active");
               });
             });
-
-            function hapus(id){
-              var yes = confirm('yakin di hapus?');
-              if(yes == true) {
-                  window.location.href = "<?php echo base_url('admin/hapus_siswa/')?>" + id;
-              }
+        });
+    </script>
+    <script>
+      function hapus(id) {
+        Swal.fire({
+            title: 'Konfirmasi Hapus',
+            text: 'Anda yakin ingin menghapus siswa ini?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Jika pengguna mengklik "Ya, Hapus!", arahkan ke fungsi hapus di controller
+                window.location.href = "<?php echo base_url(
+                    'admin/hapus_siswa/'
+                ); ?>" + id;
             }
         });
+    }
     </script>
   </body>
 </html>
